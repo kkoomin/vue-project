@@ -4,7 +4,7 @@
       <SearchBar @handleInput="input" />
     </header>
     <main class="main">
-      <VideoPlayer :videos="videos" :mainVideo="mainVideo" />
+      <VideoPlayer :mainVideo="mainVideo" />
       <VideoList
         :videos="videos"
         :mainVideo="mainVideo"
@@ -30,14 +30,12 @@ export default {
   },
   data() {
     return {
-      searchKeyword: "",
       videos: [],
-      mainVideo: null, // obj
+      mainVideo: null,
     };
   },
   methods: {
     async input(value) {
-      this.searchKeyword = value;
       // 1. 입력된 검색어를 가지고,
       const baseUrl = `https://www.googleapis.com/youtube/v3/search?`;
 
@@ -47,7 +45,7 @@ export default {
           type: "video",
           key: process.env.VUE_APP_API_KEY,
           part: "snippet",
-          q: this.searchKeyword,
+          q: value, // input keyword
           maxResults: "10",
         },
       });

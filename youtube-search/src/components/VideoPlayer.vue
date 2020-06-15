@@ -17,7 +17,7 @@
 <script>
 export default {
   name: "VideoPlayer",
-  props: ["videos", "mainVideo"],
+  props: ["mainVideo"],
   methods: {
     decodeHtmlEntity(str) {
       return str.replace(/&#(\d+);/g, function(match, dec) {
