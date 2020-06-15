@@ -1,19 +1,70 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <header>
+      <h1>Youtube Search</h1>
+      <SearchBar @handleInput="input" />
+    </header>
+    <main class="main">
+      <VideoPlayer :videos="videos" :mainVideo="mainVideo" />
+      <VideoList
+        :videos="videos"
+        :mainVideo="mainVideo"
+        @handleSetVideoPlayer="setVideoPlayer"
+      />
+    </main>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from "axios";
+
+import SearchBar from "./components/SearchBar.vue";
+import VideoPlayer from "./components/VideoPlayer.vue";
+import VideoList from "./components/VideoList.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    SearchBar,
+    VideoPlayer,
+    VideoList,
+  },
+  data() {
+    return {
+      searchKeyword: "",
+      videos: [],
+      mainVideo: null, // obj
+    };
+  },
+  methods: {
+    async input(value) {
+      this.searchKeyword = value;
+      console.log(this.searchKeyword);
+      // 1. 입력된 검색어를 가지고,
+      const baseUrl = `https://www.googleapis.com/youtube/v3/search?`;
+
+      // 2. Youtube API에 요청을 보내어
+      const videos = await axios.get(baseUrl, {
+        params: {
+          type: "video",
+          key: process.env.VUE_APP_API_KEY,
+          part: "snippet",
+          q: this.searchKeyword,
+          maxResults: "10",
+        },
+      });
+
+      // 3. 검색어로 검색한 결과를 가져옴
+      this.videos = videos.data.items;
+      this.mainVideo = videos.data.items[0];
+    },
+    setVideoPlayer(id) {
+      this.mainVideo = this.videos.filter(
+        (video) => video.id.videoId === id
+      )[0];
+    },
+  },
+};
 </script>
 
 <style>
@@ -23,6 +74,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
+  margin: 2rem;
+}
+.main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 }
 </style>
+
+//
+https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it/7394787
