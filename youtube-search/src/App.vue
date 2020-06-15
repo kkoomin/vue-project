@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <header>
-      <h1>Youtube Search</h1>
       <SearchBar @handleInput="input" />
     </header>
     <main class="main">
