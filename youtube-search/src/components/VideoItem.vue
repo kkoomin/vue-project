@@ -2,7 +2,7 @@
   <div class="video-li">
     <img :src="url" alt="Video Thumbnail Image" height="120" width="200" />
     <h4>
-      {{ decodeHtmlEntity(title.substring(0, 25)) + "..." }}
+      {{ decodeHtmlEntity(title).substring(0, 25) + "..." }}
     </h4>
   </div>
 </template>
