@@ -8,12 +8,7 @@
         class="video-li"
         @click="$emit('handleSetVideoPlayer', video.id.videoId)"
       >
-        <img
-          :src="`${video.snippet.thumbnails.high.url}`"
-          alt=""
-          height="100"
-          width="200"
-        />
+        <VideoItem :url="video.snippet.thumbnails.high.url" />
         <h4>
           {{ decodeHtmlEntity(video.snippet.title.substring(0, 25) + "...") }}
         </h4>
@@ -24,8 +19,13 @@
 </template>
 
 <script>
+import VideoItem from "./VideoItem.vue";
+
 export default {
   name: "VideoList",
+  components: {
+    VideoItem,
+  },
   methods: {
     decodeHtmlEntity(str) {
       return str.replace(/&#(\d+);/g, function(match, dec) {

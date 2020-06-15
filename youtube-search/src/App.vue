@@ -38,7 +38,6 @@ export default {
   methods: {
     async input(value) {
       this.searchKeyword = value;
-      console.log(this.searchKeyword);
       // 1. 입력된 검색어를 가지고,
       const baseUrl = `https://www.googleapis.com/youtube/v3/search?`;
 
