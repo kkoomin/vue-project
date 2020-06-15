@@ -1,7 +1,7 @@
 <template>
   <aside class="video-list">
     <div
-      v-for="video in $attrs.videos.filter((v) => v !== $attrs.mainVideo)"
+      v-for="video in videos.filter((v) => v !== mainVideo)"
       v-bind:key="video.id.videoId"
     >
       <div
@@ -26,6 +26,7 @@ export default {
   components: {
     VideoItem,
   },
+  props: ["videos", "mainVideo"],
   methods: {
     decodeHtmlEntity(str) {
       return str.replace(/&#(\d+);/g, function(match, dec) {
