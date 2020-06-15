@@ -1,7 +1,6 @@
 <template>
   <section class="video-player">
     <div v-if="$attrs.mainVideo">
-      <h3>{{ decodeHtmlEntity($attrs.mainVideo.snippet.title) }}</h3>
       <iframe
         width="942"
         height="524"
@@ -10,6 +9,7 @@
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
       ></iframe>
+      <h2>{{ decodeHtmlEntity($attrs.mainVideo.snippet.title) }}</h2>
     </div>
   </section>
 </template>
