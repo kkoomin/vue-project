@@ -1,20 +1,24 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import About from "../views/About.vue";
+import AuthHandler from "../views/AuthHandler";
 
 Vue.use(VueRouter);
 
 const routes = [
+  // {
+  //   path: "/",
+  //   name: "Home",
+  //   component: Home,
+  // },
+  // {
+  //   path: "/upload",
+  //   name: "About",
+  //   component: About,
+  // },
   {
-    path: "/",
-    name: "Home",
-    component: Home,
-  },
-  {
-    path: "/about",
-    name: "About",
-    component: About,
+    path: "/oauth2/callback",
+    name: "AuthHandler",
+    component: AuthHandler,
   },
 ];
 
