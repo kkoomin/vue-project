@@ -1,12 +1,11 @@
 <template>
   <div class="image-list">
-    {{ $store.state.images }}
     <img
+      class="image"
       v-for="image in allImages"
       v-bind:key="image.id"
       :src="image.link"
       :alt="image.title"
-      height="300px"
     />
   </div>
 </template>
@@ -24,4 +23,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.image {
+  display: block;
+  height: 300px;
+  width: 300px;
+}
+</style>

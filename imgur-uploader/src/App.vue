@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <AppHeader />
-    <router-view />
+    <div class="container ui">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -10,7 +12,7 @@ import AppHeader from "@/components/AppHeader";
 
 export default {
   name: "App",
-  components: { AppHeader },
+  components: { AppHeader }
 };
 </script>
 
