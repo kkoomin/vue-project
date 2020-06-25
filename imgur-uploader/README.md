@@ -30,3 +30,5 @@ npm i vue-cookies
 - 'qs' 라이브러리: query string handling
 - Semantic UI CDN : `https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css`
 - vue-cookies : `https://github.com/cmp-cc/vue-cookies`
+- `<router-link :to="{ name: 'ImageList' }" class="item">`
+  `:to="{name: 'COMPONENT_NAME'}"`으로 하는 이유는, 코드 확장 시 하드코딩 된 경로를 변수화 해서 바꾸기 쉽게 하기 위함!
