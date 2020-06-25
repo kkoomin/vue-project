@@ -1,7 +1,9 @@
 import qs from "qs";
 import router from "@/router";
+import cookies from "vue-cookies";
 
-const state = { token: null };
+// Cookie 값이 없으면 어차피 null이나 undefined가 나올 것
+const state = { token: cookies.get("imgur_token") };
 
 const getters = { isLoggedIn: (state) => !!state.token };
 
@@ -14,6 +16,7 @@ const actions = {
     // commit만 쓰고자 할 때, destructuring: context => {commit}
     // state.token 값 null로 바꾸기
     commit("setToken", null); // params = (함수명, param)
+    cookies.remove("imgur_token");
   },
   login: () => {
     const ROOT_URL = "https://api.imgur.com";
@@ -29,6 +32,7 @@ const actions = {
   finalizeLogin: ({ commit }, data) => {
     const token = qs.parse(data.replace("#", ""))["access_token"];
     commit("setToken", token);
+    cookies.set("imgur_token", token);
     router.push("/");
   },
 };

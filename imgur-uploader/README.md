@@ -9,6 +9,8 @@ vue create imgur-uploader
 npm i axios lodash qs
 vue add router
 vue add vuex
+
+npm i vue-cookies
 ```
 
 ### Steps
@@ -27,3 +29,4 @@ vue add vuex
 - URL의 '#' 뒤에 오는 정보는 브라우저에서 무시
 - 'qs' 라이브러리: query string handling
 - Semantic UI CDN : `https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css`
+- vue-cookies : `https://github.com/cmp-cc/vue-cookies`
