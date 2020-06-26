@@ -17,6 +17,8 @@ const actions = {
     // state.token 값 null로 바꾸기
     commit("setToken", null); // params = (함수명, param)
     cookies.remove("imgur_token");
+    location.pathname = "/";
+    // 로그아웃할 때는 세션도 다 날려야 하기때문에 그냥 새로고침을 시킴
   },
   login: () => {
     const ROOT_URL = "https://api.imgur.com";

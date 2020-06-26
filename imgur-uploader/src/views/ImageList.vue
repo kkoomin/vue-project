@@ -1,11 +1,11 @@
 <template>
-  <div class="image-list">
+  <div class="image-container">
     <img
       class="image"
       v-for="image in allImages"
       v-bind:key="image.id"
       :src="image.link"
-      :alt="image.title"
+      :alt="image.name"
     />
   </div>
 </template>
@@ -24,9 +24,12 @@ export default {
 </script>
 
 <style>
+.image-container {
+  column-count: 3;
+  column-gap: 0;
+}
 .image {
-  display: block;
-  height: 300px;
-  width: 300px;
+  padding: 5px;
+  max-width: 100%;
 }
 </style>

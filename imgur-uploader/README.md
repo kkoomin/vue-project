@@ -32,3 +32,5 @@ npm i vue-cookies
 - vue-cookies : `https://github.com/cmp-cc/vue-cookies`
 - `<router-link :to="{ name: 'ImageList' }" class="item">`
   `:to="{name: 'COMPONENT_NAME'}"`으로 하는 이유는, 코드 확장 시 하드코딩 된 경로를 변수화 해서 바꾸기 쉽게 하기 위함!
+- `<input type="file" @change="uploadImages" multiple accept="image/*" />`: accept로 특정 파일 형식만 업로드 되도록 설정
+- `Vue router`: `Navigation guard`
